@@ -2,8 +2,10 @@ package minimizers
 
 import (
 	"fmt"
+	"github.com/brianvoe/gofakeit"
 	log "github.com/sirupsen/logrus"
 	"reflect"
+	"time"
 )
 
 var (
@@ -69,4 +71,8 @@ func minimizer(l MinimizationLevel, s interface{}, parent *reflect.Value) error 
 
 func MinimizeStruct(l MinimizationLevel, s interface{}) error {
 	return minimizer(l, s, nil)
+}
+
+func init() {
+	gofakeit.Seed(time.Now().UnixNano())
 }
