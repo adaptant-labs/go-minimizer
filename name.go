@@ -9,6 +9,10 @@ import (
 // first initial and last name, while fine-grained minimization returns only
 // the first name. Anonymization will return a randomly generated name.
 func MinimizeName(level MinimizationLevel, name interface{}) interface{} {
+	if level == MinimizationAnonymize {
+		return fake.Name()
+	}
+
 	if len(name.(string)) == 0 || level == MinimizationNone {
 		return name
 	}
@@ -21,9 +25,6 @@ func MinimizeName(level MinimizationLevel, name interface{}) interface{} {
 		return strings.Join(parts, " ")
 	case MinimizationFine:
 		return parts[0]
-	case MinimizationAnonymize:
-		println("Returning fake name")
-		return fake.Name()
 	}
 
 	return name
