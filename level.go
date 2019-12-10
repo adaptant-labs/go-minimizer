@@ -22,22 +22,22 @@ const (
 	MinimizationAnonymize
 )
 
-var levelStringMap = map[MinimizationLevel]string {
+var LevelStringMap = map[MinimizationLevel]string {
 	MinimizationNone:	"none",
 	MinimizationCoarse:	"coarse",
 	MinimizationFine:	"fine",
 	MinimizationAnonymize:	"anonymize",
 }
 
-var stringLevelMap = map[string]MinimizationLevel {
+var StringLevelMap = map[string]MinimizationLevel {
 	"none":		MinimizationNone,
 	"coarse":	MinimizationCoarse,
 	"fine":		MinimizationFine,
 	"anonymize":	MinimizationAnonymize,
 }
 
-func levelFromString(levelString string) MinimizationLevel {
-	if level, ok := stringLevelMap[levelString]; ok {
+func LevelFromString(levelString string) MinimizationLevel {
+	if level, ok := StringLevelMap[levelString]; ok {
 		return level
 	}
 
@@ -59,12 +59,12 @@ func (l *MinimizationLevel) UnmarshalJSON(b []byte) error {
 		return err
 	}
 
-	*l = levelFromString(levelString)
+	*l = LevelFromString(levelString)
 	return nil
 }
 
 func (l MinimizationLevel) String() string {
-	if name, ok := levelStringMap[l]; ok {
+	if name, ok := LevelStringMap[l]; ok {
 		return name
 	}
 
