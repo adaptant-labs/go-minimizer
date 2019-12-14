@@ -20,6 +20,12 @@ const (
 
 	// Data anonymization
 	MinimizationAnonymize
+
+	// Data tokenization
+	MinimizationTokenize
+
+	// Data masking
+	MinimizationMask
 )
 
 var LevelStringMap = map[MinimizationLevel]string {
@@ -27,6 +33,8 @@ var LevelStringMap = map[MinimizationLevel]string {
 	MinimizationCoarse:	"coarse",
 	MinimizationFine:	"fine",
 	MinimizationAnonymize:	"anonymize",
+	MinimizationTokenize:	"tokenize",
+	MinimizationMask:	"mask",
 }
 
 var StringLevelMap = map[string]MinimizationLevel {
@@ -34,6 +42,8 @@ var StringLevelMap = map[string]MinimizationLevel {
 	"coarse":	MinimizationCoarse,
 	"fine":		MinimizationFine,
 	"anonymize":	MinimizationAnonymize,
+	"tokenize":	MinimizationTokenize,
+	"mask":		MinimizationMask,
 }
 
 func LevelFromString(levelString string) MinimizationLevel {
